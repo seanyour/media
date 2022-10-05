@@ -90,6 +90,11 @@
   resolved "https://registry.npmmirror.com/@types/lodash/-/lodash-4.14.186.tgz#862e5514dd7bd66ada6c70ee5fce844b06c8ee97"
   integrity sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==
 
+"@types/node@^18.8.2":
+  version "18.8.2"
+  resolved "https://registry.npmmirror.com/@types/node/-/node-18.8.2.tgz#17d42c6322d917764dd3d2d3a10d7884925de067"
+  integrity sha512-cRMwIgdDN43GO4xMWAfJAecYn8wV4JbsOGHNfNUIDiuYkUYAR5ec4Rj7IO2SAhFPEfpPtLtUTbbny/TCT7aDwA==
+
 "@types/web-bluetooth@^0.0.15":
   version "0.0.15"
   resolved "https://registry.npmmirror.com/@types/web-bluetooth/-/web-bluetooth-0.0.15.tgz#d60330046a6ed8a13b4a53df3813c44942ebdf72"
@@ -184,6 +189,11 @@
   dependencies:
     "@vue/compiler-dom" "3.2.40"
     "@vue/shared" "3.2.40"
+
+"@vue/devtools-api@^6.1.4":
+  version "6.4.3"
+  resolved "https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.4.3.tgz#784aa9e397adde727ca892c3574f5f1cfb2bc1c2"
+  integrity sha512-9WCRwdROJvWcHAdyrR7SZMM/qUvllDZnpndHXokThkUsjnJ2xe4/pvsH9FZrxFe22L+JmDKczL79HjLJ7DK9rg==
 
 "@vue/reactivity-transform@3.2.40":
   version "3.2.40"
@@ -890,6 +900,13 @@ vue-demi@*:
   version "0.13.11"
   resolved "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.13.11.tgz#7d90369bdae8974d87b1973564ad390182410d99"
   integrity sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==
+
+vue-router@^4.1.5:
+  version "4.1.5"
+  resolved "https://registry.npmmirror.com/vue-router/-/vue-router-4.1.5.tgz#256f597e3f5a281a23352a6193aa6e342c8d9f9a"
+  integrity sha512-IsvoF5D2GQ/EGTs/Th4NQms9gd2NSqV+yylxIyp/OYp8xOwxmU8Kj/74E9DTSYAyH5LX7idVUngN3JSj1X4xcQ==
+  dependencies:
+    "@vue/devtools-api" "^6.1.4"
 
 vue-tsc@^0.40.4:
   version "0.40.13"
