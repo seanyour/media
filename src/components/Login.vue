@@ -19,11 +19,11 @@
       </el-form-item>
 
       <el-form-item prop="captcha">
-        <el-input v-model="loginForm.captcha" clearable placeholder="请输入验证码"/>
+        <el-input class="captcha" v-model="loginForm.captcha" clearable placeholder="请输入验证码"/>
         <img :src="captchaUrl" @click="resetCaptcha">
       </el-form-item>
 
-      <div>
+      <div class="buttons">
         <el-button type="primary" @click="submit">确定</el-button>
         <el-button>重置</el-button>
       </div>
@@ -68,11 +68,23 @@ const verify = async () => {
 .loginBox {
   width: 450px;
   height: 450px;
+  padding: 15px;
   border: 1px solid #e5e5e5;
   border-radius: 10px;
+  box-shadow: 0px 0px 25px #cac6c6;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+  display: flex;
+  align-items: center;
+
+  .captcha {
+    width: 350px;
+  }
+
+  .buttons {
+    text-align: center;
+  }
 }
 </style>

@@ -5,6 +5,7 @@ import Components from "unplugin-vue-components/vite";
 import {ElementPlusResolver} from "unplugin-vue-components/resolvers";
 import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
+import postcssPresetEnv from 'postcss-preset-env'
 import {resolve} from "path";
 
 const pathResolve = (dir: string): string => {
@@ -47,4 +48,9 @@ export default defineConfig({
         }),
         Icons({autoInstall: true})
     ],
+    css: {
+        postcss: {
+            plugins: [postcssPresetEnv]
+        }
+    }
 });
