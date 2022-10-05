@@ -11,13 +11,25 @@ const pathResolve = (dir: string): string => {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      }
+    }
+  },
   resolve: {
     extensions: ['.js','.ts','.vue'],
     alias: {
       '@': pathResolve('src'),
+      'api': pathResolve('src/api'),
       'assets': pathResolve('src/assets'),
       'components': pathResolve('src/components'),
       'store': pathResolve('src/store'),
+      'utils': pathResolve('src/utils'),
     }
   },
   plugins: [
