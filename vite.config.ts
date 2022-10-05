@@ -17,6 +17,7 @@ export default defineConfig({
       '@': pathResolve('src'),
       'assets': pathResolve('src/assets'),
       'components': pathResolve('src/components'),
+      'store': pathResolve('src/store'),
     }
   },
   plugins: [
