@@ -7,6 +7,7 @@ import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
 import postcssPresetEnv from 'postcss-preset-env'
 import {resolve} from "path";
+import VitePluginWindicss from "vite-plugin-windicss";
 
 const pathResolve = (dir: string): string => {
     return resolve(__dirname, dir);
@@ -46,7 +47,8 @@ export default defineConfig({
                 IconsResolver(),
             ],
         }),
-        Icons({autoInstall: true})
+        Icons({autoInstall: true}),
+        VitePluginWindicss(),
     ],
     css: {
         postcss: {

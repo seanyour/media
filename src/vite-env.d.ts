@@ -7,13 +7,13 @@ declare module '*.vue' {
 }
 
 // extend axios AxiosResponse
-import axios from "axios";
+import axios, {AxiosRequestConfig} from "axios";
 
 declare module 'axios' {
-  interface IAxiosResponse<T = any> {
+  interface IAxiosResponse<M = any> {
     code: boolean,
-    data?: T,
     msg: string,
+    pass?: boolean,
   }
-  export interface AxiosResponse<T = any> extends IAxiosResponse<T> {}
+  export interface AxiosResponse<T = any> extends IAxiosResponse<M> {}
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="loginBox">
+  <div w="300px" h="300px" pos="absolute top-1/2 left-1/2" transform="~ -translate-x-1/2 -translate-y-1/2">
     <el-form :model="loginForm" ref="loginFormRef" :rules="loginFormRules">
 
       <el-form-item prop="nickname">
@@ -19,12 +19,12 @@
       </el-form-item>
 
       <el-form-item prop="captcha">
-        <el-input class="captcha" v-model="loginForm.captcha" clearable placeholder="请输入验证码"/>
+        <el-input class="!w-200px" v-model="loginForm.captcha" clearable placeholder="请输入验证码"/>
         <img :src="captchaUrl" @click="resetCaptcha">
       </el-form-item>
 
-      <div class="buttons">
-        <el-button type="primary" @click="submit">确定</el-button>
+      <div text="center">
+        <el-button type="primary" @click="submitForm">确定</el-button>
         <el-button>重置</el-button>
       </div>
     </el-form>
@@ -33,8 +33,8 @@
 
 <script setup lang="ts">
 import {onMounted, reactive, ref} from "vue";
-import {verifyCaptcha} from "api/user";
-import {FormRules} from "element-plus";
+import {verifyCaptcha, login} from "api/user";
+import {FormInstance, FormRules} from "element-plus";
 
 onMounted(() => {
   // verify();
@@ -46,7 +46,7 @@ const loginForm = reactive({
   captcha: ''
 });
 
-const loginFormRef = ref();
+const loginFormRef = ref<FormInstance>();
 
 const loginFormRules = reactive<FormRules>({
   nickname: [{required: true, message: '请输入用户名！', trigger: 'blur'}],
@@ -58,33 +58,17 @@ const captchaUrl = ref('/api/auth/captcha');
 
 const resetCaptcha = () => captchaUrl.value = captchaUrl.value + '?' + Math.random();
 
-const verify = async () => {
-  const res = await verifyCaptcha('1234');
-  console.log()
+const submitForm = () => {
+  loginFormRef.value?.validate(async (isValid) => {
+    if (!isValid) return;
+    const data = await verifyCaptcha(loginForm.captcha);
+    if (data.code && data.pass){
+      const result = await login(loginForm.nickname,loginForm.password);
+      if (result.code){
+        console.log(result)
+      }
+    }
+  })
 }
+
 </script>
-
-<style scoped lang="scss">
-.loginBox {
-  width: 450px;
-  height: 450px;
-  padding: 15px;
-  border: 1px solid #e5e5e5;
-  border-radius: 10px;
-  box-shadow: 0px 0px 25px #cac6c6;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  display: flex;
-  align-items: center;
-
-  .captcha {
-    width: 350px;
-  }
-
-  .buttons {
-    text-align: center;
-  }
-}
-</style>
